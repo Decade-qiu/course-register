@@ -1,0 +1,60 @@
+package ${package.Mapper};
+
+import ${package.Entity}.${entity};
+import ${package.EntitySpecParams}.${entity}Param;
+import ${package.EntitySpecResult}.${entity}Result;
+import ${superMapperClassPackage};
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * <p>
+ * $!{table.comment} Mapper 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
+#else
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+    /**
+     * 获取列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    List<${entity}Result> customList(@Param("paramCondition") ${entity}Param paramCondition);
+
+    /**
+     * 获取map列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    List<Map<String, Object>> customMapList(@Param("paramCondition") ${entity}Param paramCondition);
+
+    /**
+     * 获取分页实体列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    Page<${entity}Result> customPageList(@Param("page") Page page, @Param("paramCondition") ${entity}Param paramCondition);
+
+    /**
+     * 获取分页map列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    Page<Map<String, Object>> customPageMapList(@Param("page") Page page, @Param("paramCondition") ${entity}Param paramCondition);
+
+}
+#end

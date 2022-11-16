@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.demos.mapper.EduStudentInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.demos.entity.EduStudentInfo">
+        <id column="unique_key" property="uniqueKey" />
+        <result column="school_id" property="schoolId" />
+        <result column="university_id" property="universityId" />
+        <result column="student_id" property="studentId" />
+        <result column="student_name" property="studentName" />
+        <result column="grade" property="grade" />
+        <result column="class_and_grade" property="classAndGrade" />
+        <result column="majors" property="majors" />
+        <result column="class_representative" property="classRepresentative" />
+        <result column="mark_signin_limits" property="markSigninLimits" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="avatar_url" property="avatarUrl" />
+        <result column="student_email" property="studentEmail" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        unique_key AS "uniqueKey", school_id AS "schoolId", university_id AS "universityId", student_id AS "studentId", student_name AS "studentName", grade AS "grade", class_and_grade AS "classAndGrade", majors AS "majors", class_representative AS "classRepresentative", mark_signin_limits AS "markSigninLimits", modify_time AS "modifyTime", avatar_url AS "avatarUrl", student_email AS "studentEmail"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduStudentInfoResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduStudentInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_student_info where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduStudentInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_student_info where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduStudentInfoResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduStudentInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_student_info where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduStudentInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_student_info where 1 = 1
+    </select>
+
+</mapper>

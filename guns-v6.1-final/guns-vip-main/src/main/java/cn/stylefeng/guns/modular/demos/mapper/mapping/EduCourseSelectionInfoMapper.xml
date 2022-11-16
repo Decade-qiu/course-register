@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.demos.mapper.EduCourseSelectionInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.demos.entity.EduCourseSelectionInfo">
+        <id column="unique_key" property="uniqueKey" />
+        <result column="university_id" property="universityId" />
+        <result column="school_id" property="schoolId" />
+        <result column="semester_id" property="semesterId" />
+        <result column="curriculum_id" property="curriculumId" />
+        <result column="curriculum_name" property="curriculumName" />
+        <result column="student_id" property="studentId" />
+        <result column="student_name" property="studentName" />
+        <result column="teacher_id" property="teacherId" />
+        <result column="teacher_name" property="teacherName" />
+        <result column="credit_hour" property="creditHour" />
+        <result column="curriculum_type" property="curriculumType" />
+        <result column="time_for_class" property="timeForClass" />
+        <result column="classroom" property="classroom" />
+        <result column="grade" property="grade" />
+        <result column="class_and_grade" property="classAndGrade" />
+        <result column="majors" property="majors" />
+        <result column="school_name" property="schoolName" />
+        <result column="import_time" property="importTime" />
+        <result column="status" property="status" />
+        <result column="memo" property="memo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        unique_key AS "uniqueKey", university_id AS "universityId", school_id AS "schoolId", semester_id AS "semesterId", curriculum_id AS "curriculumId", curriculum_name AS "curriculumName", student_id AS "studentId", student_name AS "studentName", teacher_id AS "teacherId", teacher_name AS "teacherName", credit_hour AS "creditHour", curriculum_type AS "curriculumType", time_for_class AS "timeForClass", classroom AS "classroom", grade AS "grade", class_and_grade AS "classAndGrade", majors AS "majors", school_name AS "schoolName", import_time AS "importTime", status AS "status", memo AS "memo"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduCourseSelectionInfoResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCourseSelectionInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_course_selection_info where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCourseSelectionInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_course_selection_info where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduCourseSelectionInfoResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCourseSelectionInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_course_selection_info where 1 = 1
+            <if test="paramCondition.semesterId != null and paramCondition.semesterId != ''">
+                and s.semester_id like CONCAT('%',#{paramCondition.semesterId},'%')
+            </if>
+            <if test="paramCondition.curriculumId != null and paramCondition.curriculumId != ''">
+                and ( s.curriculum_id like CONCAT('%',#{paramCondition.curriculumId},'%') OR  s.curriculum_name like CONCAT('%',#{paramCondition.curriculumId},'%'))
+            </if>
+            <if test="paramCondition.studentId != null and paramCondition.studentId != ''">
+                and ( student_id like CONCAT('%',#{paramCondition.studentId},'%') OR student_name like CONCAT('%',#{paramCondition.studentId},'%'))
+            </if>
+            <if test="paramCondition.teacherId != null and paramCondition.teacherId != ''">
+                and (s.teacher_id like CONCAT('%',#{paramCondition.teacherId},'%') OR s.teacher_name like CONCAT('%',#{paramCondition.teacherId},'%'))
+            </if>
+            <if test="paramCondition.curriculumType != null and paramCondition.curriculumType != ''">
+                and s.curriculum_type like CONCAT('%',#{paramCondition.curriculumType},'%')
+            </if>
+            <if test="paramCondition.classroom != null and paramCondition.classroom != ''">
+                and s.classroom like CONCAT('%',#{paramCondition.classroom},'%')
+            </if>
+            <if test="paramCondition.timeForClass != null and paramCondition.timeForClass != ''">
+                and s.time_for_class like CONCAT('%',#{paramCondition.timeForClass},'%')
+            </if>
+            <if test="paramCondition.grade != null and paramCondition.grade != ''">
+                and grade like CONCAT('%',#{paramCondition.grade},'%')
+            </if>
+            <if test="paramCondition.classAndGrade != null and paramCondition.classAndGrade != ''">
+                and class_and_grade like CONCAT('%',#{paramCondition.classAndGrade},'%')
+            </if>
+            <if test="paramCondition.majors != null and paramCondition.majors != ''">
+                and majors like CONCAT('%',#{paramCondition.majors},'%')
+            </if>
+            <if test="paramCondition.schoolName != null and paramCondition.schoolName != ''">
+                and school_name like CONCAT('%',#{paramCondition.schoolName},'%')
+            </if>        
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCourseSelectionInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_course_selection_info where 1 = 1
+    </select>
+
+</mapper>

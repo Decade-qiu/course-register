@@ -1,0 +1,60 @@
+@layout("/common/_container.html",{title:"选择字段",bg:"bg-white",js:["/assets/modular/gen/tableFields.js"]}){
+
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <div class="layui-tab-content" style="height: 100px;">
+        <table lay-filter="fieldTable" id="fieldTable"></table>
+
+        <input type="hidden" id="tableName" value="${tableName}">
+        <input type="hidden" id="dbId" value="${dbId}">
+
+        <div class="layui-form-item text-center">
+            <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
+            <button class="layui-btn" id="submit">保存</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="conditionTpl">
+    <div class="layui-form">
+        <input type="checkbox" id="{{d.columnName}}" name="queryConditionFlag"
+        {{# if(d.queryConditionFlag == true){ }}
+        checked="checked"
+        {{# } }}
+        lay-skin="primary" lay-filter="queryConditionFlagFilter">
+    </div>
+</script>
+
+<script type="text/html" id="inputTypeTpl">
+    <div class="layui-form">
+        <select id="{{d.columnName}}" name="inputType" lay-filter="columnStyleFilter">
+            {{# layui.each(d.inputTypeList, function(index, data){ }}
+            <option value="{{data.value}}">{{data.name}}</option>
+            {{# }); }}
+        </select>
+    </div>
+</script>
+
+<style>
+    .layui-select-title,
+    .layui-form-select {
+        height: 34px;
+    }
+
+    .layui-form-select dl {
+        max-height: 150px;
+    }
+
+    .layui-input.layui-unselect {
+        border: 1;
+        height: 90%;
+    }
+
+    .layui-table-cell {
+        overflow: initial;
+        /*overflow: hidden;*/
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+@}

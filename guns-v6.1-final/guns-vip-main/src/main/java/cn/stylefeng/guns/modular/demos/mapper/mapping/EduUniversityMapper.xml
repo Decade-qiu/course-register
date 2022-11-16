@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.demos.mapper.EduUniversityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.demos.entity.EduUniversity">
+        <id column="unique_key" property="uniqueKey" />
+        <result column="curriculum_id" property="curriculumId" />
+        <result column="curriculum_name" property="curriculumName" />
+        <result column="student_id" property="studentId" />
+        <result column="student_name" property="studentName" />
+        <result column="re_time" property="reTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        unique_key AS "uniqueKey", curriculum_id AS "curriculumId", curriculum_name AS "curriculumName", student_id AS "studentId", student_name AS "studentName", re_time AS "reTime"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduUniversityResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_university where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_university where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduUniversityResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_university where 1 = 1
+        <if test="paramCondition.curriculumId != null and paramCondition.curriculumId != ''">
+            and ( curriculumId like CONCAT('%',#{paramCondition.curriculumId},'%') OR curriculumName like CONCAT('%',#{paramCondition.curriculumId},'%'))
+        </if>
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_university where 1 = 1
+    </select>
+
+</mapper>

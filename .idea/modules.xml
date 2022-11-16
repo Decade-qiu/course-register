@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/engineering-practice-2022-master.iml" filepath="$PROJECT_DIR$/.idea/engineering-practice-2022-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-base/guns-base.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-base/guns-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-base-auth/guns-base-auth.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-base-auth/guns-base-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-base-support.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-base-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-dbctn/guns-dbctn.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-dbctn/guns-dbctn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-generator/guns-generator.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-generator/guns-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-sys/guns-sys.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-base-support/guns-sys/guns-sys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-vip.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-vip.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-v6.1-final/guns-vip-main/guns-vip-main.iml" filepath="$PROJECT_DIR$/guns-v6.1-final/guns-vip-main/guns-vip-main.iml" />
+    </modules>
+  </component>
+</project>

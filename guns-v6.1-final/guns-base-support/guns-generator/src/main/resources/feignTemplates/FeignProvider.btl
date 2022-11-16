@@ -1,0 +1,95 @@
+package ${providerPackage};
+
+import ${apiPackage}.${entity}Api;
+import ${package.EntitySpecParams}.${entity}Param;
+import ${package.EntitySpecResult}.${entity}Result;
+import ${package.Service}.${table.serviceName};
+import cn.stylefeng.roses.kernel.model.page.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+/**
+ * ${tool.cleanWhite(table.comment)}服务提供者
+ *
+ * @author ${author}
+ * @Date ${tool.currentTime()}
+ */
+@RestController
+public class ${entity}Provider implements ${entity}Api {
+
+    <% var lowerEntity = tool.lowerFirst(entity); %>
+    <% var lowerEntityService = lowerEntity + 'Service'; %>
+
+    @Autowired
+    private ${entity}Service ${lowerEntityService};
+
+    /**
+     * 新增
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @Override
+    public void add(@RequestBody ${entity}Param param) {
+        ${lowerEntityService}.add(param);
+    }
+
+    /**
+     * 修改
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @Override
+    public void delete(@RequestBody ${entity}Param param) {
+        ${lowerEntityService}.delete(param);
+    }
+
+    /**
+     * 删除
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @Override
+    public void update(@RequestBody ${entity}Param param) {
+        ${lowerEntityService}.update(param);
+    }
+
+    /**
+     * 查询单条详情
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @Override
+    public ${entity}Result findBySpec(@RequestBody ${entity}Param param) {
+        return ${lowerEntityService}.findBySpec(param);
+    }
+
+    /**
+     * 查询列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @Override
+    public List<${entity}Result> findListBySpec(@RequestBody ${entity}Param param) {
+        return ${lowerEntityService}.findListBySpec(param);
+    }
+
+    /**
+     * 分页查询列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @Override
+    public PageResult<${entity}Result> findPageBySpec(@RequestBody ${entity}Param param) {
+        return ${lowerEntityService}.findPageBySpec(param);
+    }
+
+}

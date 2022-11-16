@@ -1,0 +1,99 @@
+package ${package.ServiceImpl};
+
+import cn.stylefeng.roses.core.page.PageFactory;
+import cn.stylefeng.roses.kernel.model.page.PageResult;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.EntitySpecParams}.${entity}Param;
+import ${package.EntitySpecResult}.${entity}Result;
+import  ${package.Service}.${table.serviceName};
+import cn.stylefeng.roses.core.util.ToolUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+
+}
+#else
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+    @Override
+    public void add(${entity}Param param){
+        ${entity} entity = getEntity(param);
+        this.save(entity);
+    }
+
+    @Override
+    public void delete(${entity}Param param){
+        this.removeById(getKey(param));
+    }
+
+    @Override
+    public void update(${entity}Param param){
+        ${entity} oldEntity = getOldEntity(param);
+        ${entity} newEntity = getEntity(param);
+        ToolUtil.copyProperties(newEntity, oldEntity);
+        this.updateById(newEntity);
+    }
+
+    @Override
+    public ${entity}Result findBySpec(${entity}Param param){
+        return null;
+    }
+
+    @Override
+    public List<${entity}Result> findListBySpec(${entity}Param param){
+        return null;
+    }
+
+    @Override
+    public PageResult<${entity}Result> findPageBySpec(${entity}Param param){
+        Page pageContext = getPageContext();
+        IPage<${entity}Result> page = this.baseMapper.customPageList(pageContext, param);
+        return new PageResult<>(page);
+    }
+
+    private Serializable getKey(${entity}Param param){
+        #set( $haveNoKey = true )
+        #foreach($field in ${table.fields})
+        #if(${field.keyFlag})
+        #set( $haveNoKey = false )
+        return param.get${field.capitalName}();
+        #end
+        #end
+        #if(${haveNoKey})
+        return null;
+        #end
+    }
+
+    private Page getPageContext() {
+        return PageFactory.defaultPage();
+    }
+
+    private ${entity} getOldEntity(${entity}Param param) {
+        return this.getById(getKey(param));
+    }
+
+    private ${entity} getEntity(${entity}Param param) {
+        ${entity} entity = new ${entity}();
+        ToolUtil.copyProperties(param, entity);
+        return entity;
+    }
+
+}
+#end

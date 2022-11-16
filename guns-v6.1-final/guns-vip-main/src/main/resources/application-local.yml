@@ -1,0 +1,23 @@
+# Mysql数据库
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.11.128:3306/guns_advanced?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: root
+    password: root
+    filters: wall,mergeStat
+
+    # 连接池大小根据实际情况调整
+    max-active: 20
+    max-pool-prepared-statement-per-connection-size: 20
+
+  # 邮件发送配置（改为自己的账号和密码）
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: sn93@qq.com
+    password: xxxpassword
+
+# 邮件发送（改为自己的账号）
+mail:
+  from: sn93@qq.com

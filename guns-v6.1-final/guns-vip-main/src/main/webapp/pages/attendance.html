@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>签到平台</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet"
+	href="${ctxPath}/assets/common/libs/layui/css/layui.css" />
+<style>
+.attendance-body {
+	width: 285px;
+	height: 285px;
+	padding-top: 20px;
+	margin: auto;
+}
+
+.attendance-body-img {
+	width: 90%;
+	height: 90%;
+	border-radius:2em;
+	border: 5px solid #1e9fff
+}
+
+.attendance-body-name {
+	font-size: xx-large;
+	text-align: center;
+	padding-bottom: 20px;
+	color: #1e9fff;
+}
+
+.attendance-body-lab {
+	text-align: center;
+	font-size: large;
+}
+
+</style>
+<script>
+        var i = 1;
+        document.getElementById("lab").innerText = "["+ i + "]秒后自动跳转...";
+        var timer = null;
+        function change()
+        {
+            var lab = document.getElementById("lab");
+            i--;
+            lab.innerText = "["+ i + "]秒后自动跳转...";
+            if(i==0)
+            {
+                window.clearInterval(timer);
+                timer=null;                
+                window.location.href = document.referrer;
+
+            }
+        }
+        
+        function start_timer()
+        {
+            timer = window.setInterval("change()", 1000);
+        }        
+
+        
+        
+        </script>
+</head>
+
+<body onload="start_timer()">
+	<div class="login-wrapper">
+
+		<div class="attendance-body">
+			<div class="attendance-body-name">${name!}</div>
+			<img src="${avatar!}" class="attendance-body-img">
+			<label id="lab" class="attendance-body-lab"></label>
+		</div>
+
+	</div>
+
+
+</body>
+</html>

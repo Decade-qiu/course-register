@@ -1,0 +1,97 @@
+/**
+ * 添加或者修改页面
+ */
+var ${entity}InfoDlg = {
+    data: {
+    <% for(item in table.fields!){                      %>
+    <%     if(itemLP.last){                             %>
+        ${item.propertyName}: ""
+    <%     }else{                                       %>
+        ${item.propertyName}: "",
+    <%     }                                            %>
+    <% }                                                %>
+    }
+};
+
+layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () {
+    var $ = layui.jquery;
+    var $ax = layui.ax;
+    var form = layui.form;
+    var admin = layui.admin;
+
+    <% for(var i=0 ; i < fieldConfigs.~size ; i++){     %>
+
+    <%  if(fieldConfigs[i].inputType == 3 ){            %>
+    //下拉多选框
+    var formSelects = layui.formSelects;
+    formSelects.config('sel${fieldConfigs[i].camelFieldName}', {
+        searchUrl: Feng.ctxPath + "/selectList",//请更换成您自己的url,可参考项目中的其他接口
+        keyName: 'name',//更换成自己的keyName,可参考项目中的其他接口
+        keyVal: 'id'//更换成自己的keyVal,可参考项目中的其他接口
+    });
+    <%     }                                            %>
+
+    <%     if(fieldConfigs[i].inputType == 4){          %>
+    //渲染时间选择框
+    var laydate = layui.laydate;
+    laydate.render({
+        elem: '#${fieldConfigs[i].camelFieldName}' //指定元素
+    });
+    <%     }                                            %>
+
+    <%     if(fieldConfigs[i].inputType == 5){          %>
+    //普通图片上传
+    var upload = layui.upload;
+    upload.render({
+        elem: '#${fieldConfigs[i].camelFieldName}'
+        ,url: Feng.ctxPath + '/system/upload' //改成您自己的上传接口
+        ,before: function(obj){
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#filePreview').attr('src', result); //图片链接（base64）
+            });
+        }
+        ,done: function(res){
+            var ajax = new $ax(Feng.ctxPath + "/system/updateAvatar", function (data) {
+                Feng.success(res.message);
+            }, function (data) {
+                Feng.error("修改失败!" + data.responseJSON.message + "!");
+            });
+            ajax.set("fileId", res.data.fileId);
+            ajax.start();
+        }
+        ,error: function(){
+            Feng.error("上传文件失败！");
+        }
+    });
+    <%     }                                            %>
+    <% }                                                %>
+
+    //表单提交事件
+    form.on('submit(btnSubmit)', function (data) {
+        var ajax = new $ax(Feng.ctxPath + "/${lowerEntity}/addItem", function (data) {
+            Feng.success("添加成功！");
+    <% if(jumpType){                        %>
+            //传给上个页面，刷新table用
+            admin.putTempData('formOk', true);
+            //关掉对话框
+            admin.closeThisDialog();
+    <% }else{                               %>
+            window.location.href = Feng.ctxPath + '/${lowerEntity}'
+    <% }                                    %>
+        }, function (data) {
+            Feng.error("添加失败！" + data.responseJSON.message)
+        });
+        ajax.set(data.field);
+        ajax.start();
+
+        return false;
+    });
+
+    <% if(!jumpType){                       %>
+    $('#cancel').click(function(){
+        window.location.href = Feng.ctxPath + '/${lowerEntity}'
+    });
+    <% }                                    %>
+
+});

@@ -1,0 +1,73 @@
+package ${package.Service};
+
+import cn.stylefeng.roses.kernel.model.page.PageResult;
+import ${package.Entity}.${entity};
+import ${package.EntitySpecParams}.${entity}Param;
+import ${package.EntitySpecResult}.${entity}Result;
+import ${superServiceClassPackage};
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+
+    /**
+     * 新增
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    void add(${entity}Param param);
+
+    /**
+     * 删除
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    void delete(${entity}Param param);
+
+    /**
+     * 更新
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    void update(${entity}Param param);
+
+    /**
+     * 查询单条数据，Specification模式
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    ${entity}Result findBySpec(${entity}Param param);
+
+    /**
+     * 查询列表，Specification模式
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    List<${entity}Result> findListBySpec(${entity}Param param);
+
+    /**
+     * 查询分页数据，Specification模式
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+     PageResult<${entity}Result> findPageBySpec(${entity}Param param);
+
+}
+#end

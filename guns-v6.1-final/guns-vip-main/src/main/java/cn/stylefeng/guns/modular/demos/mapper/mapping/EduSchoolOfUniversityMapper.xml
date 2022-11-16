@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.demos.mapper.EduSchoolOfUniversityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.demos.entity.EduSchoolOfUniversity">
+        <id column="unique_key" property="uniqueKey" />
+        <result column="university_id" property="universityId" />
+        <result column="university_name" property="universityName" />
+        <result column="school_name" property="schoolName" />
+        <result column="school_short_name" property="schoolShortName" />
+        <result column="school_id" property="schoolId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        unique_key AS "uniqueKey", university_id AS "universityId", university_name AS "universityName", school_name AS "schoolName", school_short_name AS "schoolShortName", school_id AS "schoolId"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduSchoolOfUniversityResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduSchoolOfUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_school_of_university where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduSchoolOfUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_school_of_university where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduSchoolOfUniversityResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduSchoolOfUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_school_of_university where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduSchoolOfUniversityParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_school_of_university where 1 = 1
+    </select>
+
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.demos.mapper.EduCurriculumInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.demos.entity.EduCurriculumInfo">
+        <id column="unique_key" property="uniqueKey" />
+        <result column="school_id" property="schoolId" />
+        <result column="university_id" property="universityId" />
+        <result column="curriculum_id" property="curriculumId" />
+        <result column="curriculum_name" property="curriculumName" />
+        <result column="curriculum_english_name" property="curriculumEnglishName" />
+        <result column="teachers" property="teachers" />
+        <result column="classrooms" property="classrooms" />
+        <result column="credit_hour" property="creditHour" />
+        <result column="curriculum_type" property="curriculumType" />
+        <result column="time_for_class" property="timeForClass" />
+        <result column="semester_id" property="semesterId" />
+        <result column="teacher_id" property="teacherId" />
+        <result column="need_signin" property="needSignin" />
+        <result column="course_select_num" property="courseSelectNum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        unique_key AS "uniqueKey", school_id AS "schoolId", university_id AS "universityId", curriculum_id AS "curriculumId", curriculum_name AS "curriculumName", curriculum_english_name AS "curriculumEnglishName", teachers AS "teachers", classrooms AS "classrooms", credit_hour AS "creditHour", curriculum_type AS "curriculumType", time_for_class AS "timeForClass", semester_id AS "semesterId", teacher_id AS "teacherId", need_signin AS "needSignin", course_select_num AS "courseSelectNum"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduCurriculumInfoResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCurriculumInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_curriculum_info where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCurriculumInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_curriculum_info where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.demos.model.result.EduCurriculumInfoResult" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCurriculumInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_curriculum_info where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.demos.model.params.EduCurriculumInfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from edu_curriculum_info where 1 = 1
+    </select>
+
+</mapper>

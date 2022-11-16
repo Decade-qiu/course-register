@@ -1,0 +1,113 @@
+package ${controllerPackage};
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+import cn.stylefeng.roses.kernel.model.page.PageResult;
+import cn.stylefeng.roses.kernel.model.response.ResponseData;
+import ${package.EntitySpecParams}.${entity}Param;
+import ${package.EntitySpecResult}.${entity}Result;
+import ${package.Service}.${table.serviceName};
+import cn.stylefeng.roses.kernel.scanner.modular.annotation.PostResource;
+import cn.stylefeng.roses.kernel.scanner.modular.stereotype.ApiResource;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+
+/**
+ * ${tool.cleanWhite(table.comment)}控制器
+ *
+ * @author ${author}
+ * @Date ${tool.currentTime()}
+ */
+@RestController
+@ApiResource(name = "${tool.cleanWhite(table.comment)}管理", path = "/${tool.lowerFirst(entity)}")
+@Api(tags = "${tool.cleanWhite(table.comment)}")
+public class ${entity}Controller {
+
+    <% var lowerEntity = tool.lowerFirst(entity); %>
+    <% var lowerEntityService = lowerEntity + 'Service'; %>
+
+    @Autowired
+    private ${entity}Service ${lowerEntityService};
+
+    /**
+     * 新增
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @PostResource(name = "添加", path = "/add")
+    @ApiOperation("新增")
+    public ResponseData add(@RequestBody ${entity}Param param) {
+        ${lowerEntityService}.add(param);
+        return ResponseData.success();
+    }
+
+    /**
+     * 修改
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @PostResource(name = "修改", path = "/update")
+    @ApiOperation("修改")
+    public ResponseData update(@RequestBody ${entity}Param param) {
+        ${lowerEntityService}.update(param);
+        return ResponseData.success();
+    }
+
+    /**
+     * 删除
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @PostResource(name = "删除", path = "/delete")
+    @ApiOperation("删除")
+    public ResponseData delete(@RequestBody ${entity}Param param) {
+        ${lowerEntityService}.delete(param);
+        return ResponseData.success();
+    }
+
+    /**
+     * 查询单条详情
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @PostResource(name = "查询详情", path = "/queryDetail")
+    @ApiOperation(value = "查询详情", response = ${entity}Result.class)
+    public ResponseData queryDetail(@RequestBody ${entity}Param param) {
+        ${entity}Result result = ${lowerEntityService}.findBySpec(param);
+        return ResponseData.success(result);
+    }
+
+    /**
+     * 查询列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @PostResource(name = "查询列表", path = "/queryList")
+    @ApiOperation(value = "查询列表", response = ${entity}Result.class)
+    public ResponseData queryList(@RequestBody ${entity}Param param) {
+        List<${entity}Result> listBySpec = ${lowerEntityService}.findListBySpec(param);
+        return ResponseData.success(listBySpec);
+    }
+
+    /**
+     * 分页查询列表
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @PostResource(name = "分页查询列表", path = "/queryListPage")
+    @ApiOperation(value = "分页查询列表", response = ${entity}Result.class)
+    public ResponseData queryListPage(@RequestBody ${entity}Param param) {
+        PageResult<${entity}Result> pageBySpec = ${lowerEntityService}.findPageBySpec(param);
+        return ResponseData.success(pageBySpec);
+    }
+
+}

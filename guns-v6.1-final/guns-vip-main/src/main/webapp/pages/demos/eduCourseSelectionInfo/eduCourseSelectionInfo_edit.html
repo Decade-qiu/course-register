@@ -1,0 +1,142 @@
+@layout("/common/_form.html",{js:["/assets/demos/eduCourseSelectionInfo/eduCourseSelectionInfo_edit.js"]}){
+
+<form class="layui-form" id="eduCourseSelectionInfoForm" lay-filter="eduCourseSelectionInfoForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="uniqueKey" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">大学<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="universityId" name="universityId" placeholder="请输入大学" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">学院<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="schoolId" name="schoolId" placeholder="请输入学院" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">学期<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="semesterId" name="semesterId" placeholder="请输入学期" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">课程编号<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="curriculumId" name="curriculumId" placeholder="请输入课程编号" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">课程名称<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="curriculumName" name="curriculumName" placeholder="请输入课程名称" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">学号<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="studentId" name="studentId" placeholder="请输入学号" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">学生姓名<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="studentName" name="studentName" placeholder="请输入学生姓名" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">教师编号<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="teacherId" name="teacherId" placeholder="请输入教师编号" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">教师姓名<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="teacherName" name="teacherName" placeholder="请输入教师姓名" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">学分<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="creditHour" name="creditHour" placeholder="请输入学分" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">课程分类<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="curriculumType" name="curriculumType" placeholder="请输入课程分类" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">上课时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="timeForClass" name="timeForClass" placeholder="请输入上课时间" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">教室<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="classroom" name="classroom" placeholder="请输入教室" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">年级<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="grade" name="grade" placeholder="请输入年级" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">班级<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="classAndGrade" name="classAndGrade" placeholder="请输入班级" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">主修专业<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="majors" name="majors" placeholder="请输入主修专业" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">学院名<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="schoolName" name="schoolName" placeholder="请输入学院名" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">导入时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="importTime" name="importTime" placeholder="请输入导入时间" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">有效状态<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="status" name="status" placeholder="请输入有效状态" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="memo" name="memo" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" id="cancel">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

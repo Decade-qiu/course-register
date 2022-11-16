@@ -1,0 +1,31 @@
+package ${package.EntitySpecResult};
+
+import lombok.Data;
+import java.util.Date;
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+/**
+ * <p>
+ * $!{table.comment}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+public class ${entity}Result implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+#foreach($field in ${table.fields})
+
+#if("$!field.comment" != "")
+    /**
+     * ${field.comment}
+     */
+#end
+    private ${field.propertyType} ${field.propertyName};
+#end
+
+}

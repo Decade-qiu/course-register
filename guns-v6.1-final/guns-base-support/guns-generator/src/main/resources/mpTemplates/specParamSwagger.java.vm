@@ -1,0 +1,45 @@
+package ${package.EntitySpecParams};
+
+import lombok.Data;
+import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
+import java.util.Date;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * <p>
+ * $!{table.comment}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+@ApiModel
+public class ${entity}Param implements Serializable, BaseValidatingParam {
+
+    private static final long serialVersionUID = 1L;
+
+#foreach($field in ${table.fields})
+
+#if("$!field.comment" != "")
+    /**
+     * ${field.comment}
+     */
+#end
+#if("$!field.propertyName" != "createTime" && "$!field.propertyName" != "createUser" && "$!field.propertyName" != "updateTime" && "$!field.propertyName" != "updateUser" && "$!field.propertyName" != "delFlag" && "$!field.propertyName" != "version")
+    @ApiModelProperty("$!field.comment")
+#else
+    @ApiModelProperty(hidden = true)
+#end
+    private ${field.propertyType} ${field.propertyName};
+#end
+
+    @Override
+    public String checkParam() {
+        return null;
+    }
+
+}

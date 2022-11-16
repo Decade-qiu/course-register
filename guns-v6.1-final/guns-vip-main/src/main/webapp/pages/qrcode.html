@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>打卡签到</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="refresh" content="${refresh!}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script src="http://wwcdn.weixin.qq.com/node/wework/wwopen/js/wwLogin-1.2.4.js"></script>
+<!--    type="text/javascript"-->
+<!--    <style>-->
+
+<!--	 .qrcode-item {-->
+<!--		padding-left: 16px;-->
+<!--		padding-top: 16px;-->
+<!--	}-->
+
+<!--    </style>-->
+</head>
+
+<body>
+        <div class="" >
+            <span class="qrcode-item" id="wx_reg1"></span>
+            <span class="qrcode-item" id="wx_reg2"></span>
+            <span class="qrcode-item" id="wx_reg3"></span>
+            <span class="qrcode-item" id="wx_reg4"></span>
+        </div>
+        <div class="" >
+            <span class="qrcode-item" id="wx_reg5"></span>
+            <span class="qrcode-item" id="wx_reg6"></span>
+            <span class="qrcode-item" id="wx_reg7"></span>
+            <span class="qrcode-item" id="wx_reg8"></span>
+        </div>
+</body>
+
+
+<script>
+    var w1 = new WwLogin({
+        "id" : "wx_reg1",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });
+    var w2 = new WwLogin({
+        "id" : "wx_reg2",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });var w3 = new WwLogin({
+        "id" : "wx_reg3",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });var w4 = new WwLogin({
+        "id" : "wx_reg4",
+
+        "state" : "${state}","appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "href" : "${href}",
+        "lang": "zh",
+    });var w5 = new WwLogin({
+        "id" : "wx_reg5",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });var w6 = new WwLogin({
+        "id" : "wx_reg6",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });var w7 = new WwLogin({
+        "id" : "wx_reg7",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });var w8 = new WwLogin({
+        "id" : "wx_reg8",
+        "appid" : "${appid!}",
+        "agentid" : "${agentid}",
+        "redirect_uri" :"${redirect_uri!}",
+        "state" : "${state}",
+        "href" : "${href}",
+        "lang": "zh",
+    });
+
+
+<!--    var timer1 = setInterval("new w1()",5000)-->
+<!--    new w2()-->
+<!--    new w3()-->
+<!--    new w4()-->
+<!--    new w5()-->
+<!--    new w6()-->
+<!--    new w7()-->
+<!--    new w8()-->
+</script>
+
+</html>

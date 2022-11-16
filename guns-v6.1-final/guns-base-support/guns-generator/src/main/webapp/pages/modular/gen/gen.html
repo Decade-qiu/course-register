@@ -1,0 +1,131 @@
+@layout("/common/_container.html",{title:"代码生成",js:["/assets/modular/gen/gen.js"]}){
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">代码生成</span>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-lg12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form" lay-filter="genForm">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">作者</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="author" name="author" lay-verify="title" autocomplete="off" placeholder="代码生成注释的作者" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                项目包名称
+                                <i class="layui-icon layui-icon-tips" lay-tips="具体到模块包"></i>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" id="proPackage" name="proPackage" lay-verify="title" autocomplete="off" placeholder="项目包名称，例如：cn.stylefeng.guns.modular.demos" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                模块名称
+                                <i class="layui-icon layui-icon-tips" lay-tips="利用模块名称来为业务分类，本字段可为空"></i>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" id="modularName" name="modularName" lay-verify="title" autocomplete="off" placeholder="模块名称" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                表前缀移除
+                                <i class="layui-icon layui-icon-tips" lay-tips="移除表的前缀关键字"></i>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" id="removePrefix" name="removePrefix" lay-verify="title" autocomplete="off" placeholder="表前缀移除" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">数据源选择</label>
+                            <div class="layui-input-block">
+                                <select id="dataSourceId" name="dataSourceId" lay-filter="dataSourceId">
+                                    <option value=""></option>
+                                    @for(item in dataSources!){
+                                    <option value="${item.dbId}">${item.dbName}</option>
+                                    @}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                生成位置
+                                <i class="layui-icon layui-icon-tips" lay-tips="生成好的代码存放位置"></i>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="genLocation" value="DEFAULT_PATH" title="文件默认的下载路径" checked>
+                                <input type="radio" name="genLocation" value="PROJECT_PATH" title="下载并生成到本项目">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                版本选择
+                                <i class="layui-icon layui-icon-tips" lay-tips="微服务版本可用于生成单独的controller,entity,mapper,service"></i>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="version" value="single" title="Guns单体版本" lay-filter="versionChecked" checked>
+                                <input type="radio" name="version" value="micro" title="Guns-Cloud微服务版本" lay-filter="versionChecked">
+                            </div>
+                        </div>
+
+                        <!-- microDiv 选择微服务才出现-->
+                        <div id="microDiv">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    swaager
+                                    <i class="layui-icon layui-icon-tips" lay-tips="开启则在controller和model实体上生成swagger用的注解"></i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="swagger" value="Y" title="开启">
+                                    <input type="radio" name="swagger" value="N" title="关闭" checked>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    远程接口
+                                    <i class="layui-icon layui-icon-tips" lay-tips="开启则生成feign远程接口的api和provider的生成"></i></label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="remote" value="Y" title="开启" checked>
+                                    <input type="radio" name="remote" value="N" title="关闭">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">选择表</label>
+                            <div class="layui-input-block">
+                                <table class="layui-hide" id="dbTableList" lay-filter="dbTableList"></table>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" id="execute">生成代码</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tableBar">
+    <a class="layui-btn layui-btn-xs layui-hide" name="con-btn" id="{{d.tableName}}_opt" lay-event="conditionEdit">
+        字段配置
+    </a>
+</script>
+
+<script type="text/html" id="switchTpl">
+    <div class="layui-hide" id="{{d.tableName}}_jt" name="jumpTypeDiv">
+        <input type="checkbox" name="jumpType" value="{{d.tableName}}" lay-skin="switch" lay-text="是|否" lay-filter="jumpTypeFilter">
+    </div>
+</script>
+
+@}

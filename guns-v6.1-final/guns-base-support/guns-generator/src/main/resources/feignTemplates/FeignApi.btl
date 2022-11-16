@@ -1,0 +1,77 @@
+package ${apiPackage};
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import cn.stylefeng.roses.kernel.model.page.PageResult;
+import ${package.EntitySpecParams}.${entity}Param;
+import ${package.EntitySpecResult}.${entity}Result;
+
+import java.util.List;
+
+<% var lowerEntity = tool.lowerFirst(entity); %>
+<% var lowerEntityService = lowerEntity + 'Service'; %>
+
+/**
+ * ${tool.cleanWhite(table.comment)}远程接口
+ *
+ * @author ${author}
+ * @Date ${tool.currentTime()}
+ */
+@RequestMapping("/api/${lowerEntity}")
+public interface ${entity}Api {
+
+    /**
+     * 新增
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @RequestMapping("/add")
+    void add(@RequestBody ${entity}Param param);
+
+    /**
+     * 删除
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @RequestMapping("/delete")
+    void delete(@RequestBody ${entity}Param param);
+
+    /**
+     * 更新
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @RequestMapping("/update")
+    void update(@RequestBody ${entity}Param param);
+
+    /**
+     * 查询单条数据，Specification模式
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @RequestMapping("/findBySpec")
+    ${entity}Result findBySpec(@RequestBody ${entity}Param param);
+
+    /**
+     * 查询列表，Specification模式
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @RequestMapping("/findListBySpec")
+    List<${entity}Result> findListBySpec(@RequestBody ${entity}Param param);
+
+    /**
+     * 查询分页数据，Specification模式
+     *
+     * @author ${author}
+     * @Date ${date}
+     */
+    @RequestMapping("/findPageBySpec")
+    PageResult<${entity}Result> findPageBySpec(@RequestBody ${entity}Param param);
+
+}

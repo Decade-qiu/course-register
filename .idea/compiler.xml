@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="guns-base-auth" />
+        <module name="guns-sys" />
+        <module name="guns-generator" />
+        <module name="guns-vip-main" />
+        <module name="guns-base" />
+        <module name="guns-dbctn" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="guns-base" target="1.8" />
+      <module name="guns-base-auth" target="1.8" />
+      <module name="guns-base-support" target="1.8" />
+      <module name="guns-dbctn" target="1.8" />
+      <module name="guns-generator" target="1.8" />
+      <module name="guns-sys" target="1.8" />
+      <module name="guns-vip" target="1.8" />
+      <module name="guns-vip-main" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="guns-base" options="-parameters" />
+      <module name="guns-base-auth" options="-parameters" />
+      <module name="guns-base-support" options="" />
+      <module name="guns-dbctn" options="-parameters" />
+      <module name="guns-generator" options="-parameters" />
+      <module name="guns-sys" options="-parameters" />
+      <module name="guns-vip" options="" />
+      <module name="guns-vip-main" options="-parameters" />
+    </option>
+  </component>
+</project>
